@@ -38,11 +38,11 @@ Write Header + Binary: Saves metadata + compressed binary to a .bin file.
 Decompress: Reads the header, rebuilds the tree, decodes back to original.
 
 ⚙️ Setup & Run Instructions
-🖥️ Compilation
-      g++ huffman.cpp -o huffman
+🖥️ Compilation: 
+g++ huffman.cpp -o huffman
 
-📥 Compress a File
-      ./huffman -c input.txt compressed.bin
+📥 Compress a File: 
+./huffman -c input.txt compressed.bin
 
-📤 Decompress the File
-      ./huffman -d compressed.bin output.txt
+📤 Decompress the File:  
+./huffman -d compressed.bin output.txt
