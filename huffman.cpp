@@ -228,27 +228,50 @@ public:
     }
 };
 
-int main(int argc, char* argv[]) {
+int main() {
     HuffmanCoding h;
-    if (argc < 4) {
-        cout << "Usage:\n"
-             << "  " << argv[0] << " -c <input_file> <output_file> [-v]\n"
-             << "  " << argv[0] << " -d <input_file> <output_file> [-v]\n";
-        return 1;
-    }
+    string inputFile, outputFile;
+    char choice;
+    bool verbose = true;
 
-    string mode = argv[1];
-    string input = argv[2];
-    string output = argv[3];
-    bool verbose = (argc >= 5 && string(argv[4]) == "-v");
+    cout << "=== HUFFMAN COMPRESSION TOOL ===" << endl;
+    cout << "1. Compress a file" << endl;
+    cout << "2. Decompress a file" << endl;
+    cout << "3. Exit" << endl;
+    cout << "Enter your choice (1-3): ";
+    cin >> choice;
 
-    if (mode == "-c") {
-        h.compress(input, output, verbose);
-    } else if (mode == "-d") {
-        h.decompress(input, output, verbose);
-    } else {
-        cout << "Unknown option: " << mode << endl;
-        return 1;
+    switch(choice) {
+        case '1':
+            cout << "\n=== COMPRESSION MODE ===" << endl;
+            cout << "Enter input file name: ";
+            cin >> inputFile;
+            cout << "Enter output compressed file name: ";
+            cin >> outputFile;
+            cout << "\nCompressing...\n";
+            h.compress(inputFile, outputFile, verbose);
+            cout << "Compression completed!\n";
+            break;
+            
+        case '2':
+            cout << "\n=== DECOMPRESSION MODE ===" << endl;
+            cout << "Enter compressed file name: ";
+            cin >> inputFile;
+            cout << "Enter output decompressed file name: ";
+            cin >> outputFile;
+            cout << "\nDecompressing...\n";
+            h.decompress(inputFile, outputFile, verbose);
+            cout << "Decompression completed!\n";
+            break;
+            
+        case '3':
+            cout << "Goodbye!\n";
+            break;
+            
+        default:
+            cout << "Invalid choice!\n";
+            break;
     }
+    
     return 0;
 }
